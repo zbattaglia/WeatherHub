@@ -1,4 +1,8 @@
-# Getting Started with Create React App
+# Weather Hub
+A web application for viewing location based weather forecast information.
+
+## Details
+A WORK IN PROGRESS
 
 ### Technologies
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
