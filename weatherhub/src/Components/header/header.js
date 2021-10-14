@@ -1,12 +1,11 @@
 import './header.css'
+import Container from 'react-bootstrap/Container'
 
 function Header() {
     return (
-        <header id="App-header">
-          <p>
-            This Weather Hub
-          </p>
-        </header>
+        <Container fluid className="text-center" id="App-header">
+            <p>THE WEATHER HUB</p>
+        </Container>
     );
   }
   

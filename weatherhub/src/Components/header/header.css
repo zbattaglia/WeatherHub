@@ -1,6 +1,9 @@
 #App-header {
-    text-align: center;
     font-size: large;
     font-weight: bold;
     text-decoration: underline;
+    background-color:dodgerblue;
+    color: white;
+    height: 5rem;
+    padding-top: 1.25rem;
 }
