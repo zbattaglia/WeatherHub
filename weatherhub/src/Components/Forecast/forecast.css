@@ -1,0 +1,13 @@
+.weatherColumn{
+    border: solid
+}
+
+#weatherRow {
+    border: solid;
+    border-color: aqua;
+}
+
+#container {
+    border:solid;
+    border-color: red;
+}

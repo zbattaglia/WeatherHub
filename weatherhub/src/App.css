@@ -1,1 +1,11 @@
+#header {
+  border: solid;
+  border-color: red;
+  height: 8vh;
+}
 
+#forecast {
+  border: solid;
+  border-color: blue;
+  height: 92vh;
+}
