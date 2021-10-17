@@ -3,9 +3,16 @@ import './forecast.css'
 // import Row from 'react-bootstrap/Row'
 // import Col from 'react-bootstrap/Col'
 
+import ButtonCount from '../ButtonCount/ButtonCount';
+import NameSaver from '../NameSaver/NameSaver'
+
 function Forecast() {
     return (
-        <p>The weather forecast goes here</p>
+        <div>
+            <p>The weather forecast goes here</p>
+            <ButtonCount />
+            <NameSaver />
+        </div>
     );
   }
   
