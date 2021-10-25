@@ -5,6 +5,7 @@ import './forecast.css'
 
 import ButtonCount from '../ButtonCount/ButtonCount';
 import NameSaver from '../NameSaver/NameSaver'
+import GetWeather from '../GetWeather/GetWeather';
 
 function Forecast() {
     return (
@@ -12,6 +13,7 @@ function Forecast() {
             <p>The weather forecast goes here</p>
             <ButtonCount />
             <NameSaver />
+            <GetWeather />
         </div>
     );
   }

@@ -2,10 +2,12 @@
   "name": "weatherhub",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:5000",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "axios": "^0.23.0",
     "bootstrap": "^5.1.1",
     "express": "^4.17.1",
     "react": "^17.0.2",
@@ -15,10 +17,12 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "client": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start": "node server/server.js",
+    "server": "nodemon --watch server server/server.js"
   },
   "eslintConfig": {
     "extends": [
