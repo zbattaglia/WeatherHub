@@ -16,8 +16,11 @@ router.get('/:location', (req, res) => {
     const getWeather = async( location ) => {
         try{
             const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${process.env.APIKEY}`);
-            console.log('Got a response', response.data);
+            // Pass the response data to reshape function
+            weatherData = reshapeData(response.data);
             
+            // return weatherData to the client
+            res.send( weatherData );
         } catch(error) {
             console.log('Error getting the weather from API', error);
         }
@@ -27,5 +30,28 @@ router.get('/:location', (req, res) => {
     getWeather( location );
 
 })
+
+// function to extract and reshape data to use on the client side
+function reshapeData( data ){
+    // console.log( 'Reshaping Data', data );
+    const currentWeather = {
+        id : data.weather[0].id,
+        condition : data.weather[0].main,
+        description : data.weather[0].description,
+        currentTemperatue : data.main.temp,
+        feelsLike : data.main.feels_like,
+        minTemperature : data.main.temp_min,
+        maxTemperature : data.main.temp_max,
+        percentHumidity : data.main.humidity,
+        windSpeed : data.wind.speed,
+        windGusts : data.wind.gust,
+        percentCloudCover : data.clouds.all,
+        weatherTimeOfCalculation : data.dt,
+        sunrise : data.sys.sunrise,
+        sunset : data.sys.sunset,
+        city : data.name
+
+    }
+}
 
 module.exports = router;
