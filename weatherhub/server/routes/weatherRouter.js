@@ -15,10 +15,10 @@ router.get('/:location', (req, res) => {
     // async function to make a call to the Open Weather API for the selected location using the APIKEY stored in .env file
     const getWeather = async( location ) => {
         try{
-            const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${process.env.APIKEY}`);
+            const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=${process.env.APIKEY}`);
             // Pass the response data to reshape function
             weatherData = reshapeData(response.data);
-            
+            console.log( 'Sending back to the client', weatherData );
             // return weatherData to the client
             res.send( weatherData );
         } catch(error) {
@@ -50,8 +50,9 @@ function reshapeData( data ){
         sunrise : data.sys.sunrise,
         sunset : data.sys.sunset,
         city : data.name
-
     }
+
+    return currentWeather;
 }
 
 module.exports = router;

@@ -14,19 +14,19 @@ function LocationSearch() {
     // onChange happens whenever there is typing in the input field
     const onChange = (e) => {
         // calls updateName (the state handle function) with the value of the input field
-        updateLocation(e)
+        updateLocation(e);
     }
 
-    function getWeather() {
-        console.log( 'Sending weather request to the server' );
-        let response = axios.get(`/weather/${location}`);
-        response.then((value) =>{
-            console.log('Returned from the server:', value.data);
-            updateWeather( value.data )
-        })
+    async function getWeather() {
+
+        let response = await axios.get(`/weather/${location}`);
+        console.log( 'Got a response on the client', response.data );
+        // console.log( 'Sending weather request to the server' );
+        updateWeather( response.data );
+
     }
     console.log('The location is', location );
-    console.log(`The weather at ${location} is ${weather.weather} and ${weather.temp}`);
+    console.log(`The weather at ${location} is ${weather}`);
     return (
         // Component just returns a jsx fragment to be rendered
         // Updates state with value typed into location search
@@ -43,6 +43,17 @@ function LocationSearch() {
                     SELECT
                 </Button>
             </InputGroup>
+            <ul>
+                {
+                    Object.keys(weather).map(function(key, value){
+                        return (
+                            <li key={value}>
+                                {key}: {weather[key]}
+                            </li>
+                        )
+                    })
+                }
+            </ul>
         </div>
     );
   }
