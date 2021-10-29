@@ -1,15 +1,24 @@
-import React from "react";
+import React, { useReducer } from "react";
 import axios from "axios";
 import './locationSearch.css';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from "react-bootstrap/FormControl";
 import Button from 'react-bootstrap/Button';
+// import rootReducer from "../../redux/reducers";
+import stateReducer from "../../redux/reducers/stateReducer";
 
 function LocationSearch() {
     // useState takes initial state as an argument (0)
     // Must be paired with a variable to store state (count) and a function to maninpulate (updateCount)
     const [weather, updateWeather] = React.useState("");
     const [location, updateLocation] = React.useState({});
+    // An example of useReducer hook takes a reducer and initial state. Note this takes place of useState typically
+    const [state, dispatch] = useReducer(stateReducer, {testState: 'Initial State'})
+
+    const getWeather = () => {
+        const action = { type : 'SET_TEST_STATE' }
+        dispatch(action);
+    }
 
     // onChange happens whenever there is typing in the input field
     const onChange = (e) => {
@@ -17,16 +26,16 @@ function LocationSearch() {
         updateLocation(e);
     }
 
-    async function getWeather() {
+    // async function getWeather() {
 
-        let response = await axios.get(`/weather/${location}`);
-        console.log( 'Got a response on the client', response.data );
-        // console.log( 'Sending weather request to the server' );
-        updateWeather( response.data );
+    //     let response = await axios.get(`/weather/${location}`);
+    //     console.log( 'Got a response on the client', response.data );
+    //     // console.log( 'Sending weather request to the server' );
+    //     updateWeather( response.data );
 
-    }
+    // }
     console.log('The location is', location );
-    console.log(`The weather at ${location} is ${weather}`);
+    console.log(`The weather at ${location} is ${state.testState}`);
     return (
         // Component just returns a jsx fragment to be rendered
         // Updates state with value typed into location search
